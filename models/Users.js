@@ -23,7 +23,13 @@ const usersSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'users' 
         }], 
-    }
+    },
+    {
+        toJSON: {
+          virtuals: true,
+        },
+        id: false,
+      }
 );
 
 usersSchema.virtual('friendCount')
