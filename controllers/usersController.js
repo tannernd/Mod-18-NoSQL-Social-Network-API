@@ -43,7 +43,7 @@ module.exports = {
             if (!user) {
                 res.status(404).json({ message: 'No User with that ID' });
             }
-
+            //Delete the thoughts from that user for 10 bonus points
             await Thoughts.deleteMany({_id:{$in:user.thoughts}});
             res.json({ message: 'User and thoughts deleted!' });
         } catch (err) {
@@ -85,6 +85,7 @@ module.exports = {
             res.status(500).json(err);
         }
     }, 
+    //Delete a Friend
     async deleteFriend(req, res) {
         try {
             const user = await Users.findOneAndUpdate(

@@ -69,6 +69,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+    //Create a reaction
     async createReaction(req, res) {
         try {
             const thought = await Thoughts.findOneAndUpdate(
@@ -86,6 +87,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+    //Delete a reaction
     async deleteReaction(req, res) {
         try {
             const thought = await Thoughts.findOneAndUpdate(
