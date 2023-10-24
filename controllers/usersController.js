@@ -40,7 +40,7 @@ module.exports = {
             const user = await Users.findOneAndDelete({_id:req.params.userId});
 
             if (!user) {
-                res.status(404).json({ message: 'No course with that ID' });
+                res.status(404).json({ message: 'No User with that ID' });
             }
 
             await Thoughts.deleteMany({_id:{$in:user.thoughts}});
@@ -59,7 +59,7 @@ module.exports = {
             );
 
             if(!user) {
-                return res.status(404).json({ message: 'No User with that ID' });
+                res.status(404).json({ message: 'No User with that ID' });
             }
             res.json(user);
         } catch (err) {
