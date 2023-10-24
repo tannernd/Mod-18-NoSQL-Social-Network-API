@@ -15,13 +15,18 @@ const thoughtsSchema = new mongoose.Schema(
         createdAt:{
             type:Date,
             default: moment(),
-            get: (date) => moment(date).format('MM/DD/YYYY')
+            get: (date) => moment(date).format('MM/DD/YYYY hh:mm:ss a')
+        },
+        username: {
+            type:String,
+            required: true
         },
         reactions:[reactionsSchema]
     },
     {
         toJSON: {
           virtuals: true,
+          getters: true,
         },
         id: false,
       }

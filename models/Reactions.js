@@ -8,9 +8,9 @@ const reactionsSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             index: true,
             required: true,
-            default: () => new mongoose.Schema.Types.ObjectId(),
+            auto: true
         },
-        thoughtText: {
+        reactionBody: {
             type: String,
             required: true, 
             max_length: 280,
@@ -22,9 +22,15 @@ const reactionsSchema = new mongoose.Schema(
         createdAt:{
             type:Date,
             default: moment(),
-            get: (date) => moment(date).format('MM/DD/YYYY')
+            get: (date) => moment(date).format('MM/DD/YYYY hh:mm:ss a')
         }
-    }
+    },
+    {
+        toJSON: {
+          getters: true,
+        },
+        id: false,
+      }
 );
 
 module.exports = reactionsSchema
