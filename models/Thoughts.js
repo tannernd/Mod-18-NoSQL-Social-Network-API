@@ -28,7 +28,7 @@ const reactionsSchema = new mongoose.Schema(
 );
 
 //Schema to create the thoughts Model
-const usersSchema = new mongoose.Schema(
+const thoughtsSchema = new mongoose.Schema(
     {
         thoughtText: {
             type: String,
@@ -41,9 +41,20 @@ const usersSchema = new mongoose.Schema(
             get: (date) => moment(date).format('MM/DD/YYYY')
         },
         reactions:[reactionsSchema]
-    }
+    },
+    {
+        toJSON: {
+          virtuals: true,
+        },
+        id: false,
+      }
 );
 
-const Thoughts = mongoose.model('thoughts', usersSchema);
+thoughtsSchema.virtual('reactionCount')
+.get(function() {
+    return this.reactions.length;
+});
+
+const Thoughts = mongoose.model('thoughts', thoughtsSchema);
 
 module.exports = Thoughts;
