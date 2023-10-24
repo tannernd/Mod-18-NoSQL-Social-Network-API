@@ -13,7 +13,7 @@ Project has a dependencies the user must run npm install to include the needed l
 
 Run npm start from the installed folder. 
 
-Sample usage video link: [Here](https://youtu.be/KcldjjN5gdk)
+Sample usage video link: [Here](https://youtu.be/aFP6imMo-cA)
 
 The following image shows the application's appearance and functionality in insomnia:
 
